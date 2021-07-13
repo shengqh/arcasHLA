@@ -71,7 +71,8 @@ RUN apt-get install -y git-lfs
 RUN git lfs install --system --skip-repo
 
 # install arcasHLA
-WORKDIR /home/
+WORKDIR /usr/bin
 RUN git clone https://github.com/RabadanLab/arcasHLA.git arcasHLA-master
+ENV PATH="${PATH}:/usr/bin/arcasHLA-master/"
 
-ENV PATH="${PATH}:/home/arcasHLA-master/"
+RUN arcasHLA reference --update
